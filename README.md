@@ -28,13 +28,13 @@ This package provides a distributed token bucket implementation that uses Amazon
 
 1. Clone this repository:
 ```bash
-git clone <repository-url>
-cd ddb-token
+git clone https://github.com/davidshtian/DynamoDB-Token-Bucket.git
+cd DynamoDB-Token-Bucket
 ```
 
 2. Install dependencies:
 ```bash
-pip install boto3
+pip install -r requirements.txt
 ```
 
 3. Create the DynamoDB table:
@@ -42,46 +42,19 @@ pip install boto3
 python create_table.py
 ```
 
-## Usage
-
-### Basic Example
-
-```python
-from token_bucket import DynamoDBTokenBucket
-
-# Initialize the bucket
-bucket = DynamoDBTokenBucket('token_bucket', max_tokens=10, token_timeout_seconds=300)
-bucket.initialize_bucket()
-
-# Acquire a token
-token_id, success = bucket.acquire_token(timeout_seconds=30)
-if success:
-    try:
-        # Do your work here
-        print(f"Got token: {token_id}")
-    finally:
-        # Release the token
-        bucket.release_token(token_id)
+4. Run the example code:
+```bash
+python example.py
 ```
 
-### Advanced Usage
+## DynamoDBTokenBucket
 
-See `example.py` for a more complex example demonstrating:
-- Multiple concurrent workers
-- Handling token acquisition timeouts
-- Simulated failure scenarios
-- Automatic token cleanup
-
-## API Reference
-
-### DynamoDBTokenBucket
-
-#### Constructor
+### Constructor
 ```python
 DynamoDBTokenBucket(table_name, max_tokens=10, token_timeout_seconds=300)
 ```
 
-#### Methods
+### Methods
 
 - `initialize_bucket()`: Initialize the token bucket with maximum tokens
 - `acquire_token(timeout_seconds=30)`: Attempt to acquire a token
