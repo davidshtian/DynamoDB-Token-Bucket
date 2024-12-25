@@ -1,6 +1,3 @@
-I'll help you create a README.md file for your DynamoDB Token Bucket implementation. Here's a comprehensive README:
-
-```markdown:ddb-token/README.md
 # DynamoDB Token Bucket
 
 A distributed token bucket implementation using Amazon DynamoDB for rate limiting and concurrency control.
@@ -107,15 +104,6 @@ MIT License
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-```
-
-This README provides:
-1. A clear overview of what the package does
-2. Installation and setup instructions
-3. Basic and advanced usage examples
-4. API documentation
-5. Implementation details
-6. Standard sections like license and contributing guidelines
 
 You may want to customize:
 - The repository URL in the installation section
