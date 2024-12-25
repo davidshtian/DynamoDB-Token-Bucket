@@ -47,7 +47,13 @@ python create_table.py
 python example.py
 ```
 
-## DynamoDBTokenBucket
+## Implementation Details
+
+The implementation uses DynamoDB's atomic operations to ensure thread-safety and consistency:
+- Tokens are tracked using a single DynamoDB item
+- Conditional updates prevent race conditions
+- Expired tokens are automatically cleaned up
+- Failed operations are handled gracefully
 
 ### Constructor
 ```python
@@ -61,14 +67,6 @@ DynamoDBTokenBucket(table_name, max_tokens=10, token_timeout_seconds=300)
 - `release_token(token_id)`: Release a token back to the bucket
 - `cleanup_expired_tokens()`: Clean up expired tokens
 - `reset_bucket()`: Reset the bucket to its initial state
-
-## Implementation Details
-
-The implementation uses DynamoDB's atomic operations to ensure thread-safety and consistency:
-- Tokens are tracked using a single DynamoDB item
-- Conditional updates prevent race conditions
-- Expired tokens are automatically cleaned up
-- Failed operations are handled gracefully
 
 ## License
 
